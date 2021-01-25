@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+<div class="container mt-3" style="height: 120vh;">
+  <div *ngIf="loading" class="row text-center animated fadeIn">
+    <div class="col mt-4">
+        <i class="fas fa-sync fa-spin fa-5x"></i>
+    </div>
+</div>
+
+  <div
+    id="lugiacard"
+    class="card mb-3"
+    style="max-width: 920px; max-height: 700"
+  >
+    <div class="row g-0" *ngFor="let prop of lugia">
+      <div class="col-md-4">
+        <img
+          id="lugiaimg"
+          src="../../../assets/img/lugia.jpg"
+          malt="Lugia pokemon imagen"
+        />
+      </div>
+
+      <div class="col-md-4">
+        <div class="card-body">
+          <p class="card-text">
+            <i class="fas fa-portrait"></i> Nombre:
+            <strong>{{ prop.name }}</strong>
+          </p>
+          <p class="card-text">
+            <i class="fas fa-weight"></i> Peso: {{ prop.peso }}
+          </p>
+          <p class="card-text">
+            <i class="fas fa-ruler-vertical"></i> Talla: {{ prop.talla }}
+          </p>
+          <p class="card-text">
+            <i class="fas fa-dumbbell"></i> Habilidad: {{ prop.habilidad }}
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <p class="card-text">
+            <i class="fas fa-medal"></i> Nivel de Exp: {{ prop.experiencia }}
+          </p>
+          <p class="card-text">
+            <i class="fas fa-bacterium"></i> Tipo: {{ prop.tipo }}
+          </p>
+          <p class="card-text">
+            <i class="fas fa-fan"></i> Habilidad sec: {{ prop.habilidadsec }}
+          </p>
+          <p class="card-text">
+            <i class="fas fa-running"></i> Movimiento: {{ prop.movimiento }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <input
+        type="text"
+        class="col-10 mr-2"
+        placeholder="Coloca el nombre del Pokemon que deseas buscar"
+        [(ngModel)]="busquedapoke"
+        name="busquedapoke"
+      />
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-10" id="pokecard">
+      <div
+        class="card"
+        style="width: 14rem; height: max-content; display: flex;"
+        *ngFor="let poke of pokemons | busqueda: busquedapoke"
+      >
+        <img src="{{ poke.img }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ poke.name }}</h5>
+          <p class="card-text"><i class="fas fa-bacterium"></i> Tipo: {{poke.tipo}}</p>
+      <p class="card-text"><i class="fas fa-dumbbell"></i> Habilidad: {{poke.habilidad}}</p>
+      <p class="card-text"> <i class="fas fa-running"></i>Moove: {{poke.movimiento}}</p>
+          <button
+            href="#"
+            class="btn btn-primary"
+            (click)="enviarfav(poke)"
+          >
+            Fav <i class="fas fa-star"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

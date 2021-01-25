@@ -1,0 +1,31 @@
+.img{
+    padding: 0px !important;
+   
+}
+#imgfav{
+    display: flex;
+    margin: 0px auto;
+}
+
+.table{
+    border: 1px solid #ccc;
+}
+.line{
+    line-height: 50px;
+    text-align: center;
+}
+
+.table thead th {
+    text-align: center;
+
+}
+.btn{
+    text-align: center;
+    display: flex;
+    margin: 0px auto;
+}
+
+#pokecard{
+    display: flex;
+    justify-content: space-around;
+}

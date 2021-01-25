@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<div class="container" style="height: 100vh;">
+    
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>imagen</th>
+            <th>Exp.base</th>
+            <th>Tipo</th>
+            <th>Moove</th>
+            <th>Habilidad</th>
+            <th>Eliminar de fav</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fav of favoritos">
+            <td class="line">
+              <strong class="line">{{ fav.name }}</strong>
+            </td>
+            <td class="img"><img id="imgfav" src="{{ fav.img }}" /></td>
+            <td class="line">{{ fav.experiencia }}</td>
+            <td class="line">{{ fav.tipo }}</td>
+            <td class="line">{{ fav.movimiento }}</td>
+            <td class="line">{{ fav.habilidad }}</td>
+            <td>
+              <button type="button" class="btn btn-danger line" (click)="eliminar(fav)">Borrar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <input
+        type="text"
+        class="col-12 mr-2"
+        placeholder="Coloca el nombre de tu Pokemon favorito"
+        [(ngModel)]="busquedafav"
+        name="busquedafav"
+        
+      />       
+    </div>
+  </div>
+  <div *ngIf="this.favoritos.length === 0" class="alert alert-primary mt-3" role="alert">
+    Aún no tines ningún personaje agregado al listado de favoritos
+  </div>
+      
+  <div class="col-md-8 mt-3" id="pokecard" >
+  <div class="card"  style="width: 15rem; height:max-content; display: flex;" *ngFor="let poke of favoritos | busqueda:busquedafav"> 
+    <img src="{{poke.img}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{poke.name}}</h5>
+      <p class="card-text"><i class="fas fa-bacterium"></i> Tipo: {{poke.tipo}}</p>
+      <p class="card-text"><i class="fas fa-dumbbell"></i> Habilidad: {{poke.habilidad}}</p>
+      <p class="card-text"> <i class="fas fa-running"></i>Moove: {{poke.movimiento}}</p>
+    </div>
+  </div>
+  </div>
+</div>
+  
+<app-footer></app-footer>
